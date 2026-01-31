@@ -3,6 +3,13 @@ name: Build and Deploy
 on:
   push:
     branches: ["main"]
+  workflow_dispatch: {}
+
+# You can also declare permissions here to apply to all jobs:
+permissions:
+   contents: read
+   pages: write
+   id-token: write
 
 jobs:
   build:
@@ -12,18 +19,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist   # make sure your build outputs to ./dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write       # required for Pages deployment
+      id-token: write    # required to request the OIDC token (fixes your error)
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
-
-
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
