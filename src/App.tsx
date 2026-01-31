@@ -18,7 +18,7 @@ function App() {
    * Load data from goods.json on component mount
    */
   useEffect(() => {
-    fetch('${import.meta.env.BASE_URL}goods.json')
+    fetch(`${import.meta.env.BASE_URL}goods.json`)
       .then(response => response.json())
       .then((jsonData: DataFile) => {
         setData(jsonData);
