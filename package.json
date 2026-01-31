@@ -1,5 +1,6 @@
 {
   "name": "dgr-exclusion-app",
+  "homepage": "https://schikh.github.io/dgr2/",
   "version": "1.0.0",
   "private": true,
   "type": "module",
