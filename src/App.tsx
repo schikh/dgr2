@@ -202,7 +202,7 @@ function App() {
           <div className="goods-grid">
             {data.goods.map(good => {
               const isSelected = selectedGoods.includes(good);
-              const hasConflict = hasExclusion(good);
+              //const hasConflict = hasExclusion(good);
               
               return (
                 <div
