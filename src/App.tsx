@@ -133,14 +133,14 @@ function App() {
       'PIL': 'PER.png'
     };
 
-    return `/goods/${imageMap[goodName] || 'default.png'}`;
+    return `${import.meta.env.BASE_URL}goods/${imageMap[goodName] || 'default.png'}`;
   };
 
   /**
    * Get image path for a company
    */
   const getCompanyImagePath = (companyName: string): string => {
-    return `/companies/${companyName === 'default' ? 'default.png' : companyName + '.png'}`;
+    return `${import.meta.env.BASE_URL}companies/${companyName === 'default' ? 'default.png' : companyName + '.png'}`;
   };
 
   // Loading state
@@ -178,7 +178,7 @@ function App() {
                 alt={company}
                 className="company-image"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = `/companies/${company}.png`;
+                  (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}companies/${company}.png`;
                 }}
               />
               <span className="company-label">{company}</span>
@@ -219,7 +219,7 @@ function App() {
                     alt={good}
                     className="good-image"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/goods/default.png';
+                      (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}goods/default.png`;
                     }}
                   />
                   <span className="good-label">{good}</span>
@@ -265,7 +265,7 @@ function App() {
                       alt={good}
                       className="good-image"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/goods/default.png';
+                        (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}goods/default.png`;
                       }}
                     />
                     <span className="good-label">{good}</span>
