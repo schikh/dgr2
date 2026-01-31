@@ -1,12 +1,31 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import { copyFileSync, mkdirSync, readdirSync } from 'fs';
+import { join } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/dgr2/',     // <-- include leading & trailing slashes
   plugins: [
     react(),
+    // Copy goods and companies folders to dist
+    {
+      name: 'copy-assets',
+      closeBundle() {
+        const copyDir = (src: string, dest: string) => {
+          mkdirSync(dest, { recursive: true });
+          const files = readdirSync(src);
+          files.forEach(file => {
+            if (!file.endsWith('.js') && !file.endsWith('.css')) {
+              copyFileSync(join(src, file), join(dest, file));
+            }
+          });
+        };
+        copyDir('companies', 'dist/companies');
+        copyDir('goods', 'dist/goods');
+      }
+    },
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['companies/*.png', 'goods/*.png', 'goods.json'],
