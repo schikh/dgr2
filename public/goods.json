@@ -1,5 +1,5 @@
 {
-  "companies": ["default", "Asiana", "Americas Air Line", "China"],
+  "companies": ["default", "asiana", "Americas Air Line", "china"],
   "goods": [
     "RCX-CL1.3C",
     "RGX-CL1.3G",
