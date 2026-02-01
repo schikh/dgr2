@@ -6,7 +6,7 @@ import { join } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/dgr2/',     // <-- include leading & trailing slashes
+  //base: '/dgr2/',     // <-- include leading & trailing slashes
   plugins: [
     react(),
     // Copy goods and companies folders to dist
