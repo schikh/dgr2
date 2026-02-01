@@ -29,7 +29,7 @@ module.exports = async function (context, req) {
 
     if (req.method === 'GET') {
       const { resources } = await container.items
-        .query('SELECT c.exclusions FROM c WHERE c.type = "data"')
+        .query('SELECT c.exclusions FROM c WHERE c.id = "exclusions"')
         .fetchAll();
 
       context.res = {
@@ -50,7 +50,7 @@ module.exports = async function (context, req) {
       }
 
       const { resources } = await container.items
-        .query('SELECT * FROM c WHERE c.type = "data"')
+        .query('SELECT * FROM c WHERE c.id = "exclusions"')
         .fetchAll();
 
       if (resources.length === 0) {
