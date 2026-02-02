@@ -65,11 +65,11 @@ module.exports = async function (context, req) {
       const existingDoc = resources[0];
       const updatedDoc = {
         ...existingDoc,
-        exclusions,
+        list: exclusions,
         updatedAt: new Date().toISOString()
       };
 
-      const result = await container.item(existingDoc.id, existingDoc.type).replace(updatedDoc);
+      const result = await container.item(existingDoc.id, existingDoc.id).replace(updatedDoc);
       context.res = {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
