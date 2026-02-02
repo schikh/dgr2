@@ -35,7 +35,7 @@ module.exports = async function (context, req) {
       context.res = {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: resources.length > 0 ? resources[0].goods || [] : []
+        body: resources.length > 0 ? resources[0].list || [] : []
       };
     } else if (req.method === 'PUT') {
       const { goods } = req.body;
