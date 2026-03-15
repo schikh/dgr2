@@ -140,7 +140,7 @@ function App() {
    * Get image path for a company
    */
   const getCompanyImagePath = (companyName: string): string => {
-    return `${import.meta.env.BASE_URL}companies/${companyName === 'default' ? 'default.png' : companyName + '.png'}`;
+    return `${import.meta.env.BASE_URL}companies/${companyName === 'default' ? 'default.jpg' : companyName + '.jpg'}`;
   };
 
   // Loading state

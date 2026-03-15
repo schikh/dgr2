@@ -1,5 +1,7 @@
 const { CosmosClient } = require('@azure/cosmos');
 
+// curl https://yellow-flower-0bd404c03.2.azurestaticapps.net/api/data
+
 let cosmosClient = null;
 let container = null;
 
